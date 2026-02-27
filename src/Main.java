@@ -2,8 +2,9 @@ import data_structures.DynamicArray;
 class Main {
 
     public static void main(String[] args) {
-        int a = 1;
-        String pa = String.format("%02d", a);
-        System.out.println(pa);
+        StringBuilder sb = new StringBuilder();
+        sb.insert(0,'1');
+        sb.insert(0,'0');
+        System.out.println(Integer.toBinaryString('1'-48));
     }
 }

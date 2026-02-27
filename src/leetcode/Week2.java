@@ -34,23 +34,29 @@ public class Week2 {
     }
 
     public static String addBinary(String a, String b) {
-        int m = 1;
-        int sum = 0;
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
         int i = a.length()-1;
         int j = b.length()-1;
         while(i >= 0 || j >= 0) {
-            if(i >= 0) {
-                sum += m*(a.charAt(i--)-48);
-            }
-            if(j >= 0) {
-                sum += m*(b.charAt(j--)-48);
-            }
-            m+=m;
+            char[] res = getDigits(i >= 0 ? a.charAt(i) : '0', j >= 0 ? b.charAt(j) : '0', carry);
+            i--;
+            j--;
+            carry = res.length > 1 ? 1 : 0;
+            sb.insert(0, res[res.length-1]);
         }
-        return Integer.toBinaryString(sum);
+        if(carry == 1) {
+            sb.insert(0, '1');
+        }
+        return sb.toString();
+    }
+
+    public static char[] getDigits(char a, char b, int carry) {
+        String res = Integer.toBinaryString(a-48+b-48+carry);
+        return res.toCharArray();
     }
     public static void main(String[] args) {
         int[] nums = {3,1,2,2,2};
-        System.out.println(addBinary("111111010", "1"));
+        System.out.println(addBinary("100", "110010"));
     }
 }
