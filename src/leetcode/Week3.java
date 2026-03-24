@@ -18,9 +18,7 @@ public class Week3 {
 
         return true;
     }
-//        for(int i = 0; i < nums.length; i++) {
-//        set.add(nums[i]);
-//    }
+
     public static int[] missingOut(int[] nums) {
         ArrayList<Integer> missing = new ArrayList<>();
         HashSet<Integer> set = new HashSet<>();
