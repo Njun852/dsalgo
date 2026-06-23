@@ -33,10 +33,77 @@ public class Week6 {
             System.out.println();
         }
     }
-    public static void circle() {
-        int r = 5;
+    public static void square() {
+        int size = 5;
+        for(int i = 0; i < size; i++) {
+            for(int j = 0; j < size; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+    public static void hollowSquare() {
+        int size = 5;
+        for(int i = 0; i < size; i++) {
+            for(int j = 0; j < size; j++) {
+                if(i == 0 || i == size-1 || j == 0 || j == size-1) {
+                    System.out.print("* ");
+                }else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static void leftTriangle() {
+        int height = 5;
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < i+1; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+    public static void hollowLeftTriangle() {
+        int height = 5;
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < i+1; j++) {
+                if(j == 0 || j == i || i == height-1) {
+                    System.out.print("* ");
+
+                }else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static void pyramid() {
+        int height = 3;
+        for(int i = 1; i <= height; i++) {
+            for(int j = 1; j <= height-i; j++) {
+                System.out.print("  ");
+            }
+            for(int k = 0; k < 2*i-1; k++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+    public static void rightTriangle() {
+        int height = 5;
+        for(int i = 0; i < height; i++) {
+            for(int j = 0; j < height+1; j++) {
+                if(j >= height-i) {
+                    System.out.print("* ");
+                }else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
     }
     public static void main(String[] args) {
-        triangle();
+        pyramid();
     }
 }
