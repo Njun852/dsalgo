@@ -1,5 +1,9 @@
 package leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Week7 {
     public static String convert(String s, int numRows) {
         boolean isDown = true;
@@ -32,7 +36,29 @@ public class Week7 {
         return sb.toString();
     }
 
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        List<List<Integer>> triplets = new ArrayList<List<Integer>>();
+        HashMap<Integer, Integer> map1 = new HashMap<>();
+        HashMap<Integer, Integer> visited = new HashMap<>();
+        for(int i = 0; i < nums.length; i++) {
+            map1.put(nums[i], i);
+        }
+
+        for(int i = 0; i < nums.length; i++) {
+            int n1 = nums[i];
+            for(int j = 0; j < nums.length; j++) {
+                int n2 = nums[j];
+                if(map1.get(-1*n1-n2) != null) {
+                    visited.put(j, nums[j]);
+                }
+                // I GIVE UPPPPPP
+            }
+        }
+      return triplets;
+    }
+
     public static void main(String[] args) {
-        System.out.println(convert("PAYPALISHIRING", 4));
+        System.out.println(convert("PAYPALISHIRING", 1));
     }
 }
