@@ -26,7 +26,7 @@ public class Sort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {3, 2, 10, 5, 0};
+        int[] arr = {-100,-70,-60,110,120,130,160};
         int[] sortedArr = mergeSort(arr);
 
         for(int n : sortedArr) {
