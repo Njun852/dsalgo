@@ -25,13 +25,33 @@ public class Sort {
         return sortedArr;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {-100,-70,-60,110,120,130,160};
-        int[] sortedArr = mergeSort(arr);
+    public static void quickSort(int[] a, int low, int high) {
+        if(low >= high || low < 0) return;
+        int p = partition(a, low, high);
+        quickSort(a, low, p-1);
+        quickSort(a, p+1, high);
+    }
 
-        for(int n : sortedArr) {
-            System.out.print(n+" ");
+    //lomoto partition
+    public static int partition(int[] a, int low, int high) {
+        int pivot = a[high];
+        int i = low;
+        for(int j = low; j < high; j++) {
+            if(a[j] < pivot) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+                i++;
+            }
         }
-
+        int temp = a[i];
+        a[i] = a[high];
+        a[high] = temp;
+        return i;
+    }
+    public static void main(String[] args) {
+        int[] arr = {5, 1, 2, 8, 3};
+        quickSort(arr, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
     }
 }
