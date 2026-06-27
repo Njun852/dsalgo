@@ -106,9 +106,79 @@ public class Week7 {
         return triplets;
     }
 
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode n1;
+        ListNode n2;
+        if(list1 == null && list2 == null) return null;
+        if(list1 == null) {
+            return list2;
+        }
+        if(list2 == null) {
+            return list1;
+        }
+        if(list1.val < list2.val) {
+            n2 = list2;
+            n1 = list1;
+        }else {
+            n2 = list1;
+            n1 = list2;
+        }
+        ListNode head = n1;
+        ListNode prev = n1;
+        while(n1 != null && n2!= null) {
+           if(n2.val < n1.val) {
+               prev.next = n2;
+               prev = prev.next;
+               n2 = n2.next;
+               continue;
+           }
+           if(prev != n1) {
+               prev.next = n1;
+               prev = prev.next;
+
+           }
+           n1 = n1.next;
+        }
+
+        if(n1 == null) {
+            prev.next = n2;
+        }else {
+            prev.next = n1;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(convert("PAYPALISHIRING", 1));
-        System.out.println(threeSum(new int[]{-2,0,0,2,2}).toString());
+//        System.out.println(threeSum(new int[]{-2,0,0,2,2}).toString());
+        ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+
+
+        System.out.println(mergeTwoLists(list1, list2).toString());
     }
 
 }
+
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {
+
+    }
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        ListNode pointer = this;
+        while(pointer != null) {
+            sb.append(pointer.val);
+            pointer = pointer.next;
+        }
+        return sb.toString();
+    }
+}
+

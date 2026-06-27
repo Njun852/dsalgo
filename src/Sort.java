@@ -50,7 +50,7 @@ public class Sort {
         return i;
     }
     public static void main(String[] args) {
-        int[] arr = {5, 1, 2, 8, 3};
+        int[] arr = {4, 5, 3, 1 ,6};
         quickSort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
