@@ -107,8 +107,6 @@ public class Week7 {
     }
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode n1;
-        ListNode n2;
         if(list1 == null && list2 == null) return null;
         if(list1 == null) {
             return list2;
@@ -116,34 +114,29 @@ public class Week7 {
         if(list2 == null) {
             return list1;
         }
-        if(list1.val < list2.val) {
-            n2 = list2;
-            n1 = list1;
-        }else {
-            n2 = list1;
-            n1 = list2;
-        }
-        ListNode head = n1;
-        ListNode prev = n1;
-        while(n1 != null && n2!= null) {
-           if(n2.val < n1.val) {
-               prev.next = n2;
-               prev = prev.next;
-               n2 = n2.next;
+        ListNode head = list1.val < list2.val ? list1 : list2;
+        ListNode prev = head;
+        while(list1 != null && list2 != null) {
+           if(list1.val < list2.val) {
+               if(list1 != prev) {
+                   prev.next = list1;
+                   prev = prev.next;
+               }
+               list1 = list1.next;
                continue;
            }
-           if(prev != n1) {
-               prev.next = n1;
+           if(list2 != prev) {
+               prev.next = list2;
                prev = prev.next;
 
            }
-           n1 = n1.next;
+           list2 = list2.next;
         }
 
-        if(n1 == null) {
-            prev.next = n2;
+        if(list1 == null) {
+            prev.next = list2;
         }else {
-            prev.next = n1;
+            prev.next = list1;
         }
         return head;
     }
