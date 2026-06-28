@@ -1,9 +1,6 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Week7 {
     public static String convert(String s, int numRows) {
@@ -141,6 +138,21 @@ public class Week7 {
         return head;
     }
 
+    public static String nVowels(String s, int n) {
+        StringBuilder sb = new StringBuilder();
+        HashSet<Character> c = new HashSet<>(List.of('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
+        int i = 0;
+        int j = 0;
+        while(i < n) {
+            if(c.contains(s.charAt(j))) {
+                sb.append(s.charAt(j));
+                i++;
+            }
+            j++;
+            j %= n;
+        }
+        return sb.toString();
+    }
     public static void main(String[] args) {
 //        System.out.println(convert("PAYPALISHIRING", 1));
 //        System.out.println(threeSum(new int[]{-2,0,0,2,2}).toString());
@@ -148,7 +160,8 @@ public class Week7 {
         ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 
 
-        System.out.println(mergeTwoLists(list1, list2).toString());
+//        System.out.println(mergeTwoLists(list1, list2).toString());
+        System.out.println(nVowels("meeeeek", 5));
     }
 
 }
