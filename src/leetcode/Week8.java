@@ -31,8 +31,33 @@ public class Week8 {
         }
 
     }
+    public static String multiply(String num1, String num2) {
+        int n1 = 0;
+        int n2 = 0;
+        int places = 1;
+        for(int i = num1.length()-1; i > 0; i--) {
+            n1 += (num1.charAt(i)-48)*places;
+            places *= 10;
+        }
+        if(num1.charAt(0)==48) {
+            n1*=-1;
+        }else {
+            n1 += (num1.charAt(0)-48)*places;
+        }
 
+        places = 1;
+        for(int i = num2.length()-1; i > 0; i--) {
+            n2 += (num2.charAt(i)-48)*places;
+            places *= 10;
+        }
+        if(num2.charAt(0)==48) {
+            n2*=-1;
+        }else {
+            n2 += (num2.charAt(0)-48)*places;
+        }
+        return String.valueOf(n1*n2);
+    }
     public static void main(String[] args) {
-        printTree(15, 5);
+        System.out.println(multiply("2", "3"));
     }
 }
